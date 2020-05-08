@@ -25,10 +25,10 @@ void GameObject::SetupDevice(ID3D11DeviceContext2* contex)
 	//auto modle = GeometricPrimitive::CreateCone(contex);
 }
 
-void GameObject::Render(Matrix const& parentTransform, Matrix const& view, Matrix const& proj)
+void GameObject::Render(Matrix const& view, Matrix const& proj)
 {
-	for (auto el = components.begin(); el != components.end(); el++)
-		(*el)->Render()
+	/*for (auto el = components.begin(); el != components.end(); el++)
+		(*el)->Render()*/
 	GameObject::cone->Draw(transform->GetWorld(), view, proj);
 
 }

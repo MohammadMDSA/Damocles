@@ -6,6 +6,7 @@ public:
 	~Transform();
 
 	DirectX::SimpleMath::Matrix					GetWorld();
+	DirectX::SimpleMath::Matrix					GetLocal();
 
 	void										SetPosition(DirectX::SimpleMath::Vector3);
 	void										SetPosition(float x, float y, float z);
@@ -29,5 +30,7 @@ private:
 	DirectX::SimpleMath::Vector3				scale;
 	DirectX::SimpleMath::Matrix					transform;
 	DirectX::SimpleMath::Matrix					view;
+
+	Transform*									parent;
 };
 

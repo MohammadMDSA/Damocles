@@ -15,9 +15,14 @@ Transform::~Transform()
 {
 }
 
-DirectX::SimpleMath::Matrix Transform::GetWorld()
+DirectX::SimpleMath::Matrix Transform::GetLocal()
 {
 	return transform;
+}
+
+DirectX::SimpleMath::Matrix Transform::GetWorld()
+{
+	return parent == nullptr ? transform : transform * (parent->GetWorld());
 }
 
 void Transform::SetPosition(DirectX::SimpleMath::Vector3 pos)
@@ -87,4 +92,8 @@ void Transform::ComputeTransform()
 void Transform::ComputeView()
 {
 	this->view = Matrix::CreateLookAt(position, transform.Forward(), transform.Up());
+}
+
+DirectX::SimpleMath::Matrix Transform::GetGlobalTransformMatrix()
+{
 }

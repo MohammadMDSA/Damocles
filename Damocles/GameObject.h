@@ -13,7 +13,7 @@ public:
 
 	static void										SetupDevice(ID3D11DeviceContext2* contex);
 
-	virtual void									Render(Matrix const& parentTransform, Matrix const& view, Matrix const& proj) override;
+	virtual void									Render(Matrix const& view, Matrix const& proj) override;
 	Transform*										GetTransform();
 
 

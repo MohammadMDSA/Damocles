@@ -93,7 +93,7 @@ void Game::Render()
 
     for (auto object = m_objects.begin(); object != m_objects.end(); object++)
     {
-        (*object)->Render(Matrix::Identity, m_camera.GetView(), m_camera.GetProjection());
+        (*object)->Render(m_camera.GetView(), m_camera.GetProjection());
     }
 
     PIXEndEvent(context);
