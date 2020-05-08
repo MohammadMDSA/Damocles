@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Common">
+      <UniqueIdentifier>ba7aceb1-3518-4f8e-b8f2-97fb0f38fa8d</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets">
+      <UniqueIdentifier>dfa89f59-15a3-4bb8-ba44-f1f2359325de</UniqueIdentifier>
+      <Extensions>bmp;dds;fbx;gif;jpg;jpeg;tga;tiff;tif;png</Extensions>
+    </Filter>
+    <Filter Include="GameResources">
+      <UniqueIdentifier>{00377529-2702-44c2-a8f3-c7e979610afe}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="DeviceResources.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>GameResources</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>GameResources</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>GameResources</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjectComponent.cpp">
+      <Filter>GameResources</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="StepTimer.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="DeviceResources.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="GameObject.h">
+      <Filter>GameResources</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>GameResources</Filter>
+    </ClInclude>
+    <ClInclude Include="IRenderable.h">
+      <Filter>GameResources</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>GameResources</Filter>
+    </ClInclude>
+    <ClInclude Include="IActor.h" />
+    <ClInclude Include="GameObjectComponent.h">
+      <Filter>GameResources</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\Logo.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\SmallLogo.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\SplashScreen.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\StoreLogo.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\WideLogo.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Damocles_TemporaryKey.pfx" />
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>
