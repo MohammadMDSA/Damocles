@@ -58,5 +58,4 @@ private:
     // Rendering loop timer.
     DX::StepTimer                           m_timer;
     Camera                                  m_camera;
-    std::vector<GameObject*>                m_objects;
 };

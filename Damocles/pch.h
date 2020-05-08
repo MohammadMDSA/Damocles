@@ -31,6 +31,9 @@
 
 #include <vector>
 #include <unordered_set>
+#include <set>
+#include <map>
+#include <string>
 
 #include <stdio.h>
 #include <pix.h>

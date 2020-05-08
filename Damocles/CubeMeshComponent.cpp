@@ -1,7 +1,10 @@
 #include "pch.h"
 #include "CubeMeshComponent.h"
 
+using namespace DirectX::SimpleMath;
+
 std::unique_ptr<DirectX::GeometricPrimitive> CubeMeshComponent::cube = std::unique_ptr<DirectX::GeometricPrimitive>();
+CubeMeshComponent* CubeMeshComponent::instance = nullptr;
 
 CubeMeshComponent::CubeMeshComponent()
 {
@@ -32,4 +35,12 @@ void CubeMeshComponent::SetupDevice(ID3D11DeviceContext2* context)
 void CubeMeshComponent::DeviceLost()
 {
 	cube.reset();
+}
+
+CubeMeshComponent* CubeMeshComponent::GetInstance()
+{
+	if (!instance)
+		instance = new CubeMeshComponent();
+
+	return instance;
 }

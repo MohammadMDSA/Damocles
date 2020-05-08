@@ -5,18 +5,26 @@
 using namespace DirectX;
 using namespace DirectX::SimpleMath;
 
+std::set<GameObject*> GameObject::objects = std::set<GameObject*>();
+std::map<std::string, GameObject*> GameObject::namedObjects = std::map< std::string, GameObject*>();
 
-GameObject::GameObject() :
-	transform(new Transform()),
-	components(new std::vector<GameObjectComponent*>())
+GameObject::GameObject() : GameObject("New Object")
 {
+}
+
+GameObject::GameObject(std::string name) :
+	transform(new Transform(this)),
+	components(new std::vector<GameObjectComponent*>()),
+	name("New Object")
+{
+	GameObject::objects.insert(this);
+	SetName(name);
 }
 
 GameObject::~GameObject()
 {
+	GameObject::objects.erase(this);
 	delete transform;
-	for (auto el = components->begin(); el != components->end(); el++)
-		delete (*el);
 }
 
 void GameObject::Render(Matrix const& view, Matrix const& proj)
@@ -53,4 +61,34 @@ void GameObject::RemoveComponent(GameObjectComponent* component)
 {
 	if (components->size() > 0)
 		components->erase(std::remove(components->begin(), components->end(), component), components->end());
+}
+
+std::string GameObject::GetName()
+{
+	return this->name;
+}
+
+void GameObject::SetName(std::string name)
+{
+	if (this->name != "New Object")
+		namedObjects.erase(this->name);
+	if (name == "New Object")
+		return;
+	int dup = 0;
+	while (namedObjects.count(dup != 0 ? name + "_" + std::to_string(dup) : name) > 0)
+	{
+		dup++;
+	}
+	this->name = dup != 0 ? name + "_" + std::to_string(dup) : name;
+	GameObject::namedObjects.insert(std::pair<std::string, GameObject*>(name, this));
+}
+
+GameObject* GameObject::GetByName(std::string name)
+{
+	return namedObjects[name];
+}
+
+std::set<GameObject*>* GameObject::GetGameObjects()
+{
+	return &objects;
 }

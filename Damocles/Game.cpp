@@ -62,11 +62,15 @@ void Game::Update(DX::StepTimer const& timer)
     // TODO: Add your game logic here.
     elapsedTime;
 
-    m_camera.Update(timer);
-    for (auto object = m_objects.begin(); object != m_objects.end(); object++)
+    auto objs = GameObject::GetGameObjects();
+
+    for (auto object = objs->begin(); object != objs->end(); object++)
     {
         (*object)->Update(timer);
     }
+
+    auto o = GameObject::GetByName("h")->GetTransform();
+    o->SetRotation(o->GetRotation() + DirectX::SimpleMath::Vector3(0.f, 0.01f, 0.f));
 
     PIXEndEvent();
 }
@@ -87,7 +91,9 @@ void Game::Render()
     auto context = m_deviceResources->GetD3DDeviceContext();
     PIXBeginEvent(context, PIX_COLOR_DEFAULT, L"Render");
 
-    for (auto object = m_objects.begin(); object != m_objects.end(); object++)
+    auto objs = GameObject::GetGameObjects();
+
+    for (auto object = objs->begin(); object != objs->end(); object++)
     {
         (*object)->Render(m_camera.GetView(), m_camera.GetProjection());
     }
@@ -179,11 +185,12 @@ void Game::GetDefaultSize(int& width, int& height) const
 void Game::Setup()
 {
     auto o = new GameObject();
+    auto oo = new GameObject("h");
 
     o->GetTransform()->SetPosition(0.f, 0.f, -2.f);
-    o->AddComponent(new CubeMeshComponent());
+    o->AddComponent(CubeMeshComponent::GetInstance());
+    o->GetTransform()->SetParent(oo);
 
-    m_objects.push_back(o);
 }
 #pragma endregion
 

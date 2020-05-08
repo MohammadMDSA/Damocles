@@ -1,12 +1,21 @@
 #pragma once
+#include "GameObject.h"
+
+class GameObject;
+
 class Transform
 {
 public:
-	Transform();
+	Transform(GameObject* obj);
 	~Transform();
 
 	DirectX::SimpleMath::Matrix					GetWorld();
 	DirectX::SimpleMath::Matrix					GetLocal();
+
+	void										SetParent(Transform* transform);
+	void										SetParent(GameObject* obj);
+	Transform*									GetParent() const;
+	const GameObject*							GetGameObject() const;
 
 	void										SetPosition(DirectX::SimpleMath::Vector3);
 	void										SetPosition(float x, float y, float z);
@@ -32,5 +41,6 @@ private:
 	DirectX::SimpleMath::Matrix					view;
 
 	Transform*									parent;
+	const GameObject*							object;
 };
 

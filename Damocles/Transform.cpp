@@ -3,10 +3,11 @@
 
 using namespace DirectX::SimpleMath;
 
-Transform::Transform():
+Transform::Transform(GameObject* obj):
 	position(Vector3()),
 	rotation(Vector3()),
-	scale(Vector3(1.f))
+	scale(Vector3(1.f)),
+	object(obj)
 {
 	ComputeTransform();
 }
@@ -23,6 +24,28 @@ DirectX::SimpleMath::Matrix Transform::GetLocal()
 DirectX::SimpleMath::Matrix Transform::GetWorld()
 {
 	return parent == nullptr ? transform : transform * (parent->GetWorld());
+}
+
+void Transform::SetParent(Transform* transform)
+{
+	this->parent = transform;
+}
+
+void Transform::SetParent(GameObject* obj)
+{
+	if (obj == nullptr)
+		this->parent = nullptr;
+	this->parent = obj->GetTransform();
+}
+
+Transform* Transform::GetParent() const
+{
+	return parent;
+}
+
+const GameObject* Transform::GetGameObject() const
+{
+	return object;
 }
 
 void Transform::SetPosition(DirectX::SimpleMath::Vector3 pos)
