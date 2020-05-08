@@ -11,6 +11,9 @@
     <Filter Include="GameResources">
       <UniqueIdentifier>{00377529-2702-44c2-a8f3-c7e979610afe}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GraphicResources">
+      <UniqueIdentifier>{5227efde-5ad5-4eaf-8399-67e9538c0d79}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp" />
@@ -32,6 +35,15 @@
     </ClCompile>
     <ClCompile Include="GameObjectComponent.cpp">
       <Filter>GameResources</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicResource.cpp">
+      <Filter>GraphicResources</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshRendererComponent.cpp">
+      <Filter>GraphicResources</Filter>
+    </ClCompile>
+    <ClCompile Include="CubeMeshComponent.cpp">
+      <Filter>GraphicResources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -61,6 +73,15 @@
     <ClInclude Include="IActor.h" />
     <ClInclude Include="GameObjectComponent.h">
       <Filter>GameResources</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicResource.h">
+      <Filter>GraphicResources</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshRendererComponent.h">
+      <Filter>GraphicResources</Filter>
+    </ClInclude>
+    <ClInclude Include="CubeMeshComponent.h">
+      <Filter>GraphicResources</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

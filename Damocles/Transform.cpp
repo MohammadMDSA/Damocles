@@ -93,7 +93,3 @@ void Transform::ComputeView()
 {
 	this->view = Matrix::CreateLookAt(position, transform.Forward(), transform.Up());
 }
-
-DirectX::SimpleMath::Matrix Transform::GetGlobalTransformMatrix()
-{
-}

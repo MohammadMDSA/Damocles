@@ -4,14 +4,14 @@
 #include "Transform.h"
 #include "GameObjectComponent.h"
 
+class GameObjectComponent;
+
 class GameObject : public IRenderable, public IActor
 {
 
 public:
 	GameObject();
 	~GameObject();
-
-	static void										SetupDevice(ID3D11DeviceContext2* contex);
 
 	virtual void									Render(Matrix const& view, Matrix const& proj) override;
 	Transform*										GetTransform();
@@ -21,11 +21,11 @@ public:
 	virtual void									Setup() override;
 	virtual void									Update(DX::StepTimer const& timer) override;
 
+	void											AddComponent(GameObjectComponent* component);
 	void											RemoveComponent(GameObjectComponent* component);
 
 protected:
 	Transform*										transform;
-	static std::unique_ptr<DirectX::GeometricPrimitive>	GameObject::cone;
-	std::vector<GameObjectComponent*>				components;
+	std::vector<GameObjectComponent*>*				components;
 };
 

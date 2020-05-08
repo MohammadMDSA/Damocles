@@ -30,6 +30,7 @@
 #include <stdexcept>
 
 #include <vector>
+#include <unordered_set>
 
 #include <stdio.h>
 #include <pix.h>

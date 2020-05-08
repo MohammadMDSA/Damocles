@@ -12,7 +12,9 @@ GameObjectComponent::~GameObjectComponent()
 
 void GameObjectComponent::SetGameObject(GameObject* object)
 {
-	if (this->gameObject != object)
+	if (this->gameObject == object)
+		return;
+	if (this->gameObject != nullptr)
 		this->gameObject->RemoveComponent(this);
 
 	this->gameObject = object;

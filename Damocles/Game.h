@@ -8,7 +8,8 @@
 #include "StepTimer.h"
 #include "GameObject.h"
 #include "Camera.h"
-
+#include "GraphicResource.h"
+#include "CubeMeshComponent.h"
 
 // A basic game implementation that creates a D3D11 device and
 // provides a game loop.
@@ -38,6 +39,8 @@ public:
 
     // Properties
     void GetDefaultSize( int& width, int& height ) const;
+
+    void Setup();
 
 private:
 

@@ -119,6 +119,8 @@ public:
             std::swap(outputWidth, outputHeight);
         }
 
+        m_game->Setup();
+
         m_game->Initialize(reinterpret_cast<IUnknown*>(window),
                            outputWidth, outputHeight, rotation );
     }

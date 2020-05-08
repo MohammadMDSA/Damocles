@@ -37,11 +37,7 @@ void Game::Initialize(IUnknown* window, int width, int height, DXGI_MODE_ROTATIO
     */
     m_camera.SetSize(width, height);
 
-    auto o = new GameObject();
-
-    o->GetTransform()->SetPosition(0.f, 0.f, -2.f);
-
-    m_objects.push_back(o);
+    
 }
 
 #pragma region Frame Update
@@ -180,6 +176,15 @@ void Game::GetDefaultSize(int& width, int& height) const
     width = 800;
     height = 600;
 }
+void Game::Setup()
+{
+    auto o = new GameObject();
+
+    o->GetTransform()->SetPosition(0.f, 0.f, -2.f);
+    o->AddComponent(new CubeMeshComponent());
+
+    m_objects.push_back(o);
+}
 #pragma endregion
 
 #pragma region Direct3D Resources
@@ -187,7 +192,7 @@ void Game::GetDefaultSize(int& width, int& height) const
 void Game::CreateDeviceDependentResources()
 {
     auto device = m_deviceResources->GetD3DDevice();
-    GameObject::SetupDevice(m_deviceResources->GetD3DDeviceContext());
+    GraphicResource::SetupAllDevice(m_deviceResources->GetD3DDeviceContext());
     // TODO: Initialize device dependent objects here (independent of window size).
     device;
 }
